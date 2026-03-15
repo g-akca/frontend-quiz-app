@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "./components/Header";
+import Header from "./layout/Header";
 import StartScreen from "./feature/start/StartScreen";
 import QuizScreen from "./feature/quiz/QuizScreen";
 import ScoreScreen from "./feature/score/ScoreScreen";
