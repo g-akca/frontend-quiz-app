@@ -1,11 +1,14 @@
 import { useState } from "react";
 import ButtonItem from "/src/components/ButtonItem";
 import errorIcon from "/images/icon-error.svg";
+import correctIcon from "/images/icon-correct.svg";
+import incorrectIcon from "/images/icon-incorrect.svg";
 
 function QuizScreen({ endQuiz, quiz }) {
   const [questionNum, setQuestionNum] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
   const [error, setError] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const totalQuestions = quiz.questions.length;
   const currentQuestion = quiz.questions[questionNum - 1];
@@ -15,6 +18,23 @@ function QuizScreen({ endQuiz, quiz }) {
       setError(true);
       return;
     }
+
+    setError(false);
+
+    if (submitted) {
+      if (questionNum < totalQuestions) {
+        setQuestionNum(questionNum + 1);
+        setSelectedOption(null);
+        setSubmitted(false);
+      }
+      else {
+        endQuiz();
+      }
+
+      return;
+    }
+
+    setSubmitted(true);
   };
 
   return (
@@ -35,24 +55,47 @@ function QuizScreen({ endQuiz, quiz }) {
         <div className="grid auto-rows-[72px] gap-4">
           {currentQuestion.options.map((option, index) => {
             const isSelected = selectedOption === index;
+            const isCorrect = option === currentQuestion.answer;
 
             return (
-              <ButtonItem 
-                key={index} 
-                handleClick={() => setSelectedOption(index)} 
-                className={`group hover:border-purple-600 transition-all 
-                  ${isSelected ? "border-3 border-purple-600" : "border-3 border-transparent"}`}
+              <ButtonItem
+                key={index}
+                handleClick={() => !submitted && setSelectedOption(index)}
+                className={`group transition-all
+                  ${
+                    submitted && isSelected && isCorrect ? "border-3 border-green-500"
+                    : submitted && isSelected && !isCorrect ? "border-3 border-red-500"
+                    : isSelected ? "border-3 border-purple-600"
+                    : !submitted ? "border-3 border-transparent hover:border-purple-600"
+                    : "border-3 border-transparent"
+                  }
+                `}
               >
                 <div className="flex gap-4 items-center">
-                  <div className={`shrink-0 h-10 w-10 flex justify-center items-center rounded-md
-                    group-hover:bg-purple-600 group-hover:text-white transition-all
-                    ${isSelected ? "bg-purple-600 text-white" : "bg-grey-50 text-grey-500"}`}
+                  <div 
+                    className={`shrink-0 h-10 w-10 flex justify-center items-center rounded-md transition-all
+                      ${
+                        submitted && isSelected && isCorrect ? "bg-green-500 text-white"
+                        : submitted && isSelected && !isCorrect ? "bg-red-500 text-white"
+                        : isSelected ? "bg-purple-600 text-white" 
+                        : !submitted ? "bg-grey-50 text-grey-500 group-hover:bg-purple-600 group-hover:text-white"
+                        : "bg-grey-50 text-grey-500"
+                      }
+                    `}
                   >
                     <span className="text-lg font-medium leading-[100%]">{String.fromCharCode(65 + index)}</span>
                   </div>
 
                   <p className="font-medium leading-[100%] text-lg text-start">{option}</p>
                 </div>
+
+                {submitted && isCorrect && (
+                  <img src={correctIcon} alt="Correct icon" />
+                )}
+
+                {submitted && isSelected && !isCorrect && (
+                  <img src={incorrectIcon} alt="Incorrect icon" />
+                )}
               </ButtonItem>
             );
           })}
@@ -64,7 +107,7 @@ function QuizScreen({ endQuiz, quiz }) {
           text-white text-lg leading-[100%] font-medium 
           rounded-xl cursor-pointer transition-all"
         >
-          Submit Answer
+          {submitted ? "Next Question" : "Submit Answer"}
         </button>
 
         {error && selectedOption === null && (
