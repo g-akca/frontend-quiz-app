@@ -47,10 +47,10 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
   return (
     <section className="grow flex flex-col gap-10 desktop:flex-row desktop:gap-32">
       <div className="desktop:w-120 shrink-0">
-        <h2 className="text-grey-500 italic mb-4 tablet:mb-6">Question {questionNum} of {totalQuestions}</h2>
+        <h2 className="text-grey-500 dark:text-blue-300 italic mb-4 tablet:mb-6">Question {questionNum} of {totalQuestions}</h2>
         <p className="text-[20px] leading-[120%] font-medium mb-6 tablet:mb-10 tablet:text-[36px] desktop:mb-46">{currentQuestion.question}</p>
 
-        <div className="h-4 bg-white p-1 rounded-full">
+        <div className="h-4 bg-white dark:bg-blue-850 p-1 rounded-full">
           <div
             className="bg-purple-600 h-full rounded-full transition-all"
             style={{ width: `${(questionNum / totalQuestions) * 100}%` }}
@@ -119,7 +119,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
         {error && (
           <div className="flex justify-center items-center gap-2">
             <img src={errorIcon} alt="Error icon" className="w-8 h-8 tablet:w-10 tablet:h-10" />
-            <p className="text-red-500 font-medium text-lg leading-[100%] tablet:text-2xl tablet:leading-base tablet:font-normal">Please select an answer</p>
+            <p className="text-red-500 dark:text-white font-medium text-lg leading-[100%] tablet:text-2xl tablet:leading-base tablet:font-normal">Please select an answer</p>
           </div>
         )}
       </div>
