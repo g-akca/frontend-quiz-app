@@ -1,7 +1,7 @@
-import SubjectItem from "./SubjectItem";
+import StartItem from "./StartItem";
 import data from "/src/data/data.json";
 
-function StartScreen({ startQuiz, setSubject }) {
+function StartScreen({ startQuiz, setQuiz }) {
   return (
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -15,9 +15,9 @@ function StartScreen({ startQuiz, setSubject }) {
 
       <div className="grid auto-rows-[72px] gap-4">
         {data.quizzes.map(item => (
-          <SubjectItem 
+          <StartItem 
             key={item.title} 
-            startQuiz={() => { startQuiz(); setSubject(item.title); }} 
+            startQuiz={() => { startQuiz(); setQuiz(item); }} 
             subject={item.title} 
             iconUrl={item.icon} 
             iconBgColor={item.color}
