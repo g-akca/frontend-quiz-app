@@ -30,10 +30,11 @@ function App() {
 
   return (
     <div 
-      className="min-h-screen text-base leading-base text-blue-900 overflow-x-hidden
-      bg-grey-50 bg-no-repeat bg-[url('/images/pattern-background-mobile-light.svg')]
-      tablet:text-[20px] tablet:bg-[url('/images/pattern-background-tablet-light.svg')]
-      desktop:bg-[url('/images/pattern-background-desktop-light.svg')] desktop:bg-cover"
+      className="min-h-screen text-base leading-base text-blue-900 dark:text-white 
+      overflow-x-hidden bg-grey-50 dark:bg-blue-900 bg-no-repeat 
+      dark:bg-[url('/images/pattern-background-mobile-dark.svg')] bg-[url('/images/pattern-background-mobile-light.svg')]
+      tablet:text-[20px] tablet:bg-[url('/images/pattern-background-tablet-light.svg')] tablet:dark:bg-[url('/images/pattern-background-tablet-dark.svg')]
+      desktop:bg-cover desktop:bg-[url('/images/pattern-background-desktop-light.svg')] desktop:dark:bg-[url('/images/pattern-background-desktop-dark.svg')]"
     >
       <Header quizStarted={screen === "quiz" || screen === "score"} quiz={quiz} />
 
