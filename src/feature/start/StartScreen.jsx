@@ -4,7 +4,7 @@ import data from "/src/data/data.json";
 
 function StartScreen({ startQuiz, setQuiz }) {
   return (
-    <section className="grow flex flex-col gap-10 max-w-7xl tablet:gap-16 desktop:flex-row desktop:gap-32">
+    <section className="flex flex-col gap-10 max-w-7xl tablet:gap-16 desktop:grow desktop:flex-row desktop:gap-32">
       <div className="flex flex-col gap-4 desktop:gap-12">
         <h1 className="text-[40px] leading-[100%] font-light tablet:text-[64px]">
           <p>Welcome to the</p>
