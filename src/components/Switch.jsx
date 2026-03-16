@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-function Switch() {
-  const [enabled, setEnabled] = useState(false);
-
+function Switch({ enabled, setEnabled }) {
   return (
     <button
       className="w-8 h-5 p-1 bg-purple-600 rounded-full cursor-pointer flex items-center"
