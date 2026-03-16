@@ -47,8 +47,8 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
   return (
     <section className="flex flex-col gap-10">
       <div>
-        <h2 className="text-grey-500 italic mb-4">Question {questionNum} of {totalQuestions}</h2>
-        <p className="text-[20px] leading-[120%] font-medium mb-6">{currentQuestion.question}</p>
+        <h2 className="text-grey-500 italic mb-4 tablet:mb-6">Question {questionNum} of {totalQuestions}</h2>
+        <p className="text-[20px] leading-[120%] font-medium mb-6 tablet:mb-10 tablet:text-[36px]">{currentQuestion.question}</p>
 
         <div className="h-4 bg-white p-1 rounded-full">
           <div
@@ -58,8 +58,8 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
         </div>
       </div>
       
-      <div className="flex flex-col gap-4">
-        <div className="grid auto-rows-[72px] gap-4">
+      <div className="flex flex-col gap-4 tablet:gap-8">
+        <div className="grid auto-rows-[72px] gap-4 tablet:gap-6 tablet:auto-rows-[88px]">
           {currentQuestion.options.map((option, index) => {
             const isSelected = selectedOption === index;
             const isCorrect = option === currentQuestion.answer;
@@ -78,9 +78,10 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
                   }
                 `}
               >
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-4 items-center tablet:gap-8">
                   <div 
-                    className={`shrink-0 h-10 w-10 flex justify-center items-center rounded-md transition-all
+                    className={`shrink-0 h-10 w-10 flex justify-center items-center rounded-md transition-all 
+                      tablet:h-14 tablet:w-14 tablet:rounded-xl
                       ${
                         submitted && isSelected && isCorrect ? "bg-green-500 text-white"
                         : submitted && isSelected && !isCorrect ? "bg-red-500 text-white"
@@ -90,18 +91,18 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
                       }
                     `}
                   >
-                    <span className="text-lg font-medium leading-[100%]">{String.fromCharCode(65 + index)}</span>
+                    <span className="text-lg font-medium leading-[100%] tablet:text-[28px]">{String.fromCharCode(65 + index)}</span>
                   </div>
 
-                  <p className="font-medium leading-[100%] text-lg text-start">{option}</p>
+                  <p className="font-medium leading-[100%] text-lg text-start tablet:text-[28px]">{option}</p>
                 </div>
 
                 {submitted && isCorrect && (
-                  <img src={correctIcon} alt="Correct icon" />
+                  <img src={correctIcon} alt="Correct icon" className="w-8 h-8 tablet:w-10 tablet:h-10" />
                 )}
 
                 {submitted && isSelected && !isCorrect && (
-                  <img src={incorrectIcon} alt="Incorrect icon" />
+                  <img src={incorrectIcon} alt="Incorrect icon" className="w-8 h-8 tablet:w-10 tablet:h-10"  />
                 )}
               </ListItemButton>
             );
@@ -109,7 +110,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
         </div>
 
         <SubmitButton handleClick={handleSubmit}>
-          {submitted ? "Next Question" : "Submit Answer"}
+          {submitted && questionNum >= totalQuestions ? "See Results" : submitted ? "Next Question" : "Submit Answer"}
         </SubmitButton>
 
         {error && (
