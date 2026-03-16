@@ -46,7 +46,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
 
   return (
     <section className="flex flex-col gap-10 desktop:grow desktop:flex-row desktop:gap-32">
-      <div className="w-120">
+      <div className="desktop:w-120 desktop:shrink-0">
         <h2 className="text-grey-500 italic mb-4 tablet:mb-6">Question {questionNum} of {totalQuestions}</h2>
         <p className="text-[20px] leading-[120%] font-medium mb-6 tablet:mb-10 tablet:text-[36px] desktop:mb-46">{currentQuestion.question}</p>
 
