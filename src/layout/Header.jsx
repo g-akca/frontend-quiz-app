@@ -8,7 +8,10 @@ function Header({ quizStarted, quiz }) {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <header className={`px-6 py-4 h-18 flex ${quizStarted ? "justify-between" : "justify-end"} tablet:px-16 tablet:py-10 tablet:h-34`}>
+    <header 
+      className={`px-6 py-4 h-18 flex ${quizStarted ? "justify-between" : "justify-end"} 
+        tablet:px-16 tablet:py-10 tablet:h-34 desktop:px-35 desktop:h-55.5`}
+    >
       {quizStarted && (
         <Subject subject={quiz.title} iconUrl={quiz.icon} iconBgColor={quiz.color} />
       )}
