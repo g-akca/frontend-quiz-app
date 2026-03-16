@@ -13,13 +13,23 @@ function Header({ quizStarted, quiz }) {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      setDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
     const root = document.getElementById("root");
 
     if (darkMode) {
       root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     }
     else {
       root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
