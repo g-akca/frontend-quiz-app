@@ -2,13 +2,6 @@ import SubjectItem from "./SubjectItem";
 import data from "/src/data/data.json";
 
 function StartScreen({ startQuiz, setSubject }) {
-  const subjectColors = {
-    HTML: "bg-orange-50",
-    CSS: "bg-green-100",
-    JavaScript: "bg-blue-50",
-    Accessibility: "bg-purple-100",
-  };
-
   return (
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -27,7 +20,7 @@ function StartScreen({ startQuiz, setSubject }) {
             startQuiz={() => { startQuiz(); setSubject(item.title); }} 
             subject={item.title} 
             iconUrl={item.icon} 
-            iconBgColor={subjectColors[item.title]}
+            iconBgColor={item.color}
           />
         ))}
       </div>
