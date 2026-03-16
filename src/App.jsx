@@ -8,10 +8,10 @@ function App() {
   const [screen, setScreen] = useState("start");
 
   return (
-    <div>
+    <div className="min-h-screen bg-grey-50 bg-[url('/images/pattern-background-mobile-light.svg')] bg-cover">
       <Header quizStarted={screen === "quiz" || screen === "score"} />
 
-      <main>
+      <main className="pt-8 px-6">
         {screen === "start" && <StartScreen startQuiz={() => setScreen("quiz")} />}
         {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} />}
         {screen === "score" && <ScoreScreen goToStart={() => setScreen("start")} />}
