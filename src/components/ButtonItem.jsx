@@ -1,6 +1,10 @@
-function ButtonItem({ children, handleClick }) {
+function ButtonItem({ children, handleClick, className="" }) {
   return (
-    <button className="p-4 bg-white rounded-xl flex justify-start items-center cursor-pointer" onClick={handleClick}>
+    <button 
+      className={`p-4 bg-white rounded-xl flex justify-start items-center 
+        cursor-pointer ${className}`}
+      onClick={handleClick}
+    >
       {children}
     </button>
   )

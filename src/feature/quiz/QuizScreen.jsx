@@ -3,6 +3,8 @@ import ButtonItem from "/src/components/ButtonItem";
 
 function QuizScreen({ endQuiz, quiz }) {
   const [questionNum, setQuestionNum] = useState(1);
+  const [selectedOption, setSelectedOption] = useState(null);
+
   const totalQuestions = quiz.questions.length;
   const currentQuestion = quiz.questions[questionNum - 1];
 
@@ -22,20 +24,38 @@ function QuizScreen({ endQuiz, quiz }) {
       
       <div className="flex flex-col gap-4">
         <div className="grid auto-rows-[72px] gap-4">
-          {currentQuestion.options.map((option, index) => (
-            <ButtonItem key={index}>
-              <div className="flex gap-4 items-center">
-                <div className="shrink-0 bg-grey-50 h-10 w-10 flex justify-center items-center rounded-md">
-                  <span className="text-lg font-medium leading-[100%] text-grey-500">{String.fromCharCode(65 + index)}</span>
-                </div>
+          {currentQuestion.options.map((option, index) => {
+            const isSelected = selectedOption === index;
 
-                <p className="font-medium leading-[100%] text-lg text-start">{option}</p>
-              </div>
-            </ButtonItem>
-          ))}
+            return (
+              <ButtonItem 
+                key={index} 
+                handleClick={() => setSelectedOption(index)} 
+                className={`group hover:border-purple-600 transition-all 
+                  ${isSelected ? "border-3 border-purple-600" : "border-3 border-transparent"}`}
+              >
+                <div className="flex gap-4 items-center">
+                  <div className={`shrink-0 h-10 w-10 flex justify-center items-center rounded-md
+                    group-hover:bg-purple-600 group-hover:text-white transition-all
+                    ${isSelected ? "bg-purple-600 text-white" : "bg-grey-50 text-grey-500"}`}
+                  >
+                    <span className="text-lg font-medium leading-[100%]">{String.fromCharCode(65 + index)}</span>
+                  </div>
+
+                  <p className="font-medium leading-[100%] text-lg text-start">{option}</p>
+                </div>
+              </ButtonItem>
+            );
+          })}
         </div>
 
-        <button className="bg-purple-600 p-4 h-14 text-white text-lg leading-[100%] font-medium rounded-xl">Submit Answer</button>
+        <button
+          className="bg-purple-600 p-4 h-14 
+          text-white text-lg leading-[100%] font-medium 
+          rounded-xl cursor-pointer"
+        >
+          Submit Answer
+        </button>
       </div>
     </section>
   );
