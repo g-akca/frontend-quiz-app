@@ -1,7 +1,7 @@
 import Subject from "/src/components/Subject";
 import SubmitButton from "/src/components/SubmitButton";
 
-function ScoreScreen({ goToStart, quiz, score }) {
+function ScoreScreen({ resetQuiz, quiz, score }) {
   return (
     <section className="flex flex-col gap-10">
       <h1 className="text-[40px] leading-[100%] font-light">
@@ -19,7 +19,7 @@ function ScoreScreen({ goToStart, quiz, score }) {
           </div>
         </div>
 
-        <SubmitButton handleClick={goToStart}>
+        <SubmitButton handleClick={resetQuiz}>
           Play Again
         </SubmitButton>
       </div>

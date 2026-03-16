@@ -24,7 +24,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
 
     if (submitted) {
       if (questionNum < totalQuestions) {
-        setQuestionNum(questionNum + 1);
+        setQuestionNum(prev => prev + 1);
         setSelectedOption(null);
         setSubmitted(false);
       }
@@ -112,7 +112,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
           {submitted ? "Next Question" : "Submit Answer"}
         </SubmitButton>
 
-        {error && selectedOption === null && (
+        {error && (
           <div className="flex justify-center items-center gap-2">
             <img src={errorIcon} alt="Error icon" className="w-8 h-8" />
             <p className="text-red-500 font-medium text-lg">Please select an answer</p>

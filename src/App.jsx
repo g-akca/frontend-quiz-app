@@ -9,6 +9,12 @@ function App() {
   const [quiz, setQuiz] = useState(null);
   const [score, setScore] = useState(0);
 
+  function resetQuiz() {
+    setScreen("start");
+    setScore(0);
+    setQuiz(null);
+  }
+
   return (
     <div 
       className="min-h-screen text-base leading-base text-blue-900
@@ -18,8 +24,8 @@ function App() {
 
       <main className="pt-8 px-6">
         {screen === "start" && <StartScreen startQuiz={() => setScreen("quiz")} setQuiz={setQuiz} />}
-        {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} quiz={quiz} incrementScore={() => setScore(score + 1)} />}
-        {screen === "score" && <ScoreScreen goToStart={() => { setScreen("start"); setScore(0); setQuiz(null); }} quiz={quiz} score={score} />}
+        {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} quiz={quiz} incrementScore={() => setScore(prev => prev + 1)} />}
+        {screen === "score" && <ScoreScreen resetQuiz={resetQuiz} quiz={quiz} score={score} />}
       </main>
     </div>
   );
