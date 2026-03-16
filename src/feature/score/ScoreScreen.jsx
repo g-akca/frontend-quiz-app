@@ -3,13 +3,13 @@ import SubmitButton from "/src/components/SubmitButton";
 
 function ScoreScreen({ resetQuiz, quiz, score }) {
   return (
-    <section className="flex flex-col gap-10 max-w-7xl tablet:gap-16 desktop:grow desktop:flex-row desktop:gap-36">
+    <section className="grow flex flex-col gap-10 max-w-7xl tablet:gap-16 desktop:flex-row desktop:gap-36">
       <h1 className="text-[40px] leading-[100%] font-light tablet:text-[64px]">
         <p>Quiz completed</p>
         <p className="mt-2 font-medium tablet:mt-4 desktop:mt-2">You scored...</p>
       </h1>
 
-      <div className="flex flex-col gap-4 tablet:gap-8 desktop:grow">
+      <div className="grow flex flex-col gap-4 tablet:gap-8">
         <div className="bg-white p-8 flex flex-col gap-4 items-center rounded-xl shadow-[0_16px_40px_rgba(143,160,193,0.14)] tablet:gap-10 tablet:p-12 tablet:rounded-3xl">
           <Subject subject={quiz.title} iconUrl={quiz.icon} iconBgColor={quiz.color} />
 

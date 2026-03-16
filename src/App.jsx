@@ -47,7 +47,7 @@ function App() {
               animate="animate"
               exit="exit"
               transition={screenTransition}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <StartScreen startQuiz={() => setScreen("quiz")} setQuiz={setQuiz} />
             </motion.div>
@@ -61,7 +61,7 @@ function App() {
               animate="animate"
               exit="exit"
               transition={screenTransition}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <QuizScreen
                 endQuiz={() => setScreen("score")}
@@ -79,7 +79,7 @@ function App() {
               animate="animate"
               exit="exit"
               transition={screenTransition}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <ScoreScreen resetQuiz={resetQuiz} quiz={quiz} score={score} />
             </motion.div>
