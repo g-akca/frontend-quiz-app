@@ -1,12 +1,21 @@
 import { useState } from "react";
 import ButtonItem from "/src/components/ButtonItem";
+import errorIcon from "/images/icon-error.svg";
 
 function QuizScreen({ endQuiz, quiz }) {
   const [questionNum, setQuestionNum] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [error, setError] = useState(false);
 
   const totalQuestions = quiz.questions.length;
   const currentQuestion = quiz.questions[questionNum - 1];
+
+  const handleSubmit = () => {
+    if (selectedOption === null) {
+      setError(true);
+      return;
+    }
+  };
 
   return (
     <section className="flex flex-col gap-10">
@@ -50,12 +59,20 @@ function QuizScreen({ endQuiz, quiz }) {
         </div>
 
         <button
+          onClick={handleSubmit}
           className="bg-purple-600 p-4 h-14 
           text-white text-lg leading-[100%] font-medium 
-          rounded-xl cursor-pointer"
+          rounded-xl cursor-pointer transition-all"
         >
           Submit Answer
         </button>
+
+        {error && selectedOption === null && (
+          <div className="flex justify-center items-center gap-2">
+            <img src={errorIcon} alt="Error icon" className="w-8 h-8" />
+            <p className="text-red-500 font-medium text-lg">Please select an answer</p>
+          </div>
+        )}
       </div>
     </section>
   );
