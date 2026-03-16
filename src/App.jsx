@@ -23,7 +23,7 @@ function App() {
     >
       <Header quizStarted={screen === "quiz" || screen === "score"} quiz={quiz} />
 
-      <main className="pt-8 px-6 tablet:px-16 tablet:pt-3">
+      <main className="pt-8 px-6 tablet:px-16 tablet:pt-2">
         {screen === "start" && <StartScreen startQuiz={() => setScreen("quiz")} setQuiz={setQuiz} />}
         {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} quiz={quiz} incrementScore={() => setScore(prev => prev + 1)} />}
         {screen === "score" && <ScoreScreen resetQuiz={resetQuiz} quiz={quiz} score={score} />}
