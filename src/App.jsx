@@ -9,7 +9,10 @@ function App() {
   const [subject, setSubject] = useState(null);
 
   return (
-    <div className="min-h-screen bg-grey-50 bg-[url('/images/pattern-background-mobile-light.svg')] bg-cover">
+    <div 
+      className="min-h-screen text-base leading-base text-blue-900
+      bg-grey-50 bg-cover bg-[url('/images/pattern-background-mobile-light.svg')]"
+    >
       <Header quizStarted={screen === "quiz" || screen === "score"} subject={subject} />
 
       <main className="pt-8 px-6">
