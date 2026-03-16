@@ -12,7 +12,7 @@ function StartScreen() {
         <p className="italic text-grey-500">Pick a subject to get started.</p>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="grid auto-rows-[72px] gap-4">
         <SubjectItem />
         <SubjectItem />
         <SubjectItem />
