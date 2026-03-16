@@ -45,10 +45,10 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
   };
 
   return (
-    <section className="flex flex-col gap-10">
-      <div>
+    <section className="grow flex flex-col gap-10 desktop:flex-row desktop:gap-32">
+      <div className="max-w-120">
         <h2 className="text-grey-500 italic mb-4 tablet:mb-6">Question {questionNum} of {totalQuestions}</h2>
-        <p className="text-[20px] leading-[120%] font-medium mb-6 tablet:mb-10 tablet:text-[36px]">{currentQuestion.question}</p>
+        <p className="text-[20px] leading-[120%] font-medium mb-6 tablet:mb-10 tablet:text-[36px] desktop:mb-46">{currentQuestion.question}</p>
 
         <div className="h-4 bg-white p-1 rounded-full">
           <div
@@ -58,8 +58,8 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
         </div>
       </div>
       
-      <div className="flex flex-col gap-4 tablet:gap-8">
-        <div className="grid auto-rows-[72px] gap-4 tablet:gap-6 tablet:auto-rows-[88px]">
+      <div className="grow flex flex-col gap-4 tablet:gap-8">
+        <div className="grid auto-rows-[72px] gap-4 tablet:gap-6 tablet:auto-rows-[88px] desktop:auto-rows-[104px] desktop:gap-4">
           {currentQuestion.options.map((option, index) => {
             const isSelected = selectedOption === index;
             const isCorrect = option === currentQuestion.answer;

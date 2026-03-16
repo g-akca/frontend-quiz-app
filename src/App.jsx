@@ -20,7 +20,7 @@ function App() {
       className="min-h-screen text-base leading-base text-blue-900
       bg-grey-50 bg-no-repeat bg-[url('/images/pattern-background-mobile-light.svg')]
       tablet:text-[20px] tablet:bg-[url('/images/pattern-background-tablet-light.svg')]
-      desktop:bg-[url('/images/pattern-background-desktop-light.svg')]"
+      desktop:bg-[url('/images/pattern-background-desktop-light.svg')] desktop:bg-cover"
     >
       <Header quizStarted={screen === "quiz" || screen === "score"} quiz={quiz} />
 
