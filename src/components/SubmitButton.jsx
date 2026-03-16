@@ -1,4 +1,4 @@
-function SubmitButton( handleClick, children ) {
+function SubmitButton({ handleClick, children }) {
   return (
     <button 
       onClick={handleClick} 

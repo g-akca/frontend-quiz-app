@@ -19,7 +19,7 @@ function App() {
       <main className="pt-8 px-6">
         {screen === "start" && <StartScreen startQuiz={() => setScreen("quiz")} setQuiz={setQuiz} />}
         {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} quiz={quiz} incrementScore={() => setScore(score + 1)} />}
-        {screen === "score" && <ScoreScreen goToStart={() => setScreen("start")} quiz={quiz} score={score} />}
+        {screen === "score" && <ScoreScreen goToStart={() => { setScreen("start"); setScore(0); setQuiz(null); }} quiz={quiz} score={score} />}
       </main>
     </div>
   );
