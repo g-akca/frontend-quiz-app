@@ -52,7 +52,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
 
         <div className="h-4 bg-white p-1 rounded-full">
           <div
-            className="bg-purple-600 h-full rounded-full"
+            className="bg-purple-600 h-full rounded-full transition-all"
             style={{ width: `${(questionNum / totalQuestions) * 100}%` }}
           ></div>
         </div>
