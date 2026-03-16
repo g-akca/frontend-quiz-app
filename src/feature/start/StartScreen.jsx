@@ -1,4 +1,5 @@
-import StartItem from "./StartItem";
+import ButtonItem from "/src/components/ButtonItem";
+import Subject from "/src/components/Subject";
 import data from "/src/data/data.json";
 
 function StartScreen({ startQuiz, setQuiz }) {
@@ -15,13 +16,9 @@ function StartScreen({ startQuiz, setQuiz }) {
 
       <div className="grid auto-rows-[72px] gap-4">
         {data.quizzes.map(item => (
-          <StartItem 
-            key={item.title} 
-            startQuiz={() => { startQuiz(); setQuiz(item); }} 
-            subject={item.title} 
-            iconUrl={item.icon} 
-            iconBgColor={item.color}
-          />
+          <ButtonItem key={item.title} handleClick={() => { setQuiz(item); startQuiz(); }}>
+            <Subject subject={item.title} iconUrl={item.icon} iconBgColor={item.color} />
+          </ButtonItem>
         ))}
       </div>
     </section>
