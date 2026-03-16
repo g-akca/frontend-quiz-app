@@ -4,7 +4,7 @@ import Switch from "../components/Switch";
 
 function Header({ quizStarted, subject }) {
   return (
-    <header className={`px-6 py-4 flex justify-end ${quizStarted ? "justify-between" : ""}`}>
+    <header className={`px-6 py-4 flex ${quizStarted ? "justify-between" : "justify-end"}`}>
       {quizStarted && (
         <div>
           <img />
