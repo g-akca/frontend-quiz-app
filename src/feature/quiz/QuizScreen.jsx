@@ -109,7 +109,10 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
           })}
         </div>
 
-        <SubmitButton handleClick={handleSubmit}>
+        <SubmitButton
+          handleClick={handleSubmit}
+          disabled={selectedOption === null && !submitted}
+        >
           {submitted && questionNum >= totalQuestions ? "See Results" : submitted ? "Next Question" : "Submit Answer"}
         </SubmitButton>
 
