@@ -11,7 +11,7 @@ function StartScreen({ startQuiz, setQuiz }) {
           <p className="mt-2 font-medium">Frontend Quiz!</p>
         </h1>
 
-        <p className="italic text-grey-500">Pick a subject to get started.</p>
+        <p className="italic text-grey-500 dark:text-blue-300">Pick a subject to get started.</p>
       </div>
 
       <div className="grow grid auto-rows-[72px] gap-4 tablet:auto-rows-[88px] tablet:gap-6 desktop:gap-4 desktop:auto-rows-[104px]">

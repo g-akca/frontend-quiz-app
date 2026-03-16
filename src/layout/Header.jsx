@@ -32,7 +32,7 @@ function Header({ quizStarted, quiz }) {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.5 }}
             className="flex items-center"
           >
             <Subject subject={quiz.title} iconUrl={quiz.icon} iconBgColor={quiz.color} />
