@@ -1,4 +1,5 @@
 import Subject from "/src/components/Subject";
+import SubmitButton from "/src/components/SubmitButton";
 
 function ScoreScreen({ goToStart, quiz, score }) {
   return (
@@ -18,14 +19,9 @@ function ScoreScreen({ goToStart, quiz, score }) {
           </div>
         </div>
 
-        <button
-          onClick={goToStart}
-          className="bg-purple-600 p-4 h-14 
-          text-white text-lg leading-[100%] font-medium 
-          rounded-xl cursor-pointer transition-all"
-        >
+        <SubmitButton handleClick={goToStart}>
           Play Again
-        </button>
+        </SubmitButton>
       </div>
     </section>
   )

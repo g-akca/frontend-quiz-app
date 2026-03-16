@@ -1,4 +1,4 @@
-function ButtonItem({ children, handleClick, className="" }) {
+function ListItemButton({ children, handleClick, className="" }) {
   return (
     <button 
       className={`p-4 bg-white rounded-xl flex justify-between items-center cursor-pointer ${className}`}
@@ -9,4 +9,4 @@ function ButtonItem({ children, handleClick, className="" }) {
   )
 }
 
-export default ButtonItem;
+export default ListItemButton;

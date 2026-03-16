@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ButtonItem from "/src/components/ButtonItem";
+import ListItemButton from "/src/components/ListItemButton";
+import SubmitButton from "/src/components/SubmitButton";
 import errorIcon from "/images/icon-error.svg";
 import correctIcon from "/images/icon-correct.svg";
 import incorrectIcon from "/images/icon-incorrect.svg";
@@ -64,7 +65,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
             const isCorrect = option === currentQuestion.answer;
 
             return (
-              <ButtonItem
+              <ListItemButton
                 key={index}
                 handleClick={() => !submitted && setSelectedOption(index)}
                 className={`group transition-all
@@ -102,19 +103,14 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
                 {submitted && isSelected && !isCorrect && (
                   <img src={incorrectIcon} alt="Incorrect icon" />
                 )}
-              </ButtonItem>
+              </ListItemButton>
             );
           })}
         </div>
 
-        <button
-          onClick={handleSubmit}
-          className="bg-purple-600 p-4 h-14 
-          text-white text-lg leading-[100%] font-medium 
-          rounded-xl cursor-pointer transition-all"
-        >
+        <SubmitButton handleClick={handleSubmit}>
           {submitted ? "Next Question" : "Submit Answer"}
-        </button>
+        </SubmitButton>
 
         {error && selectedOption === null && (
           <div className="flex justify-center items-center gap-2">
