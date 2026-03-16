@@ -1,6 +1,14 @@
 import SubjectItem from "./SubjectItem";
+import data from "/src/data/data.json";
 
-function StartScreen() {
+function StartScreen({ startQuiz, setSubject }) {
+  const subjectColors = {
+    HTML: "bg-orange-50",
+    CSS: "bg-green-100",
+    JavaScript: "bg-blue-50",
+    Accessibility: "bg-purple-100",
+  };
+
   return (
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -13,10 +21,15 @@ function StartScreen() {
       </div>
 
       <div className="grid auto-rows-[72px] gap-4">
-        <SubjectItem />
-        <SubjectItem />
-        <SubjectItem />
-        <SubjectItem />
+        {data.quizzes.map(item => (
+          <SubjectItem 
+            key={item.title} 
+            startQuiz={() => { startQuiz(); setSubject(item.title); }} 
+            subject={item.title} 
+            iconUrl={item.icon} 
+            iconBgColor={subjectColors[item.title]}
+          />
+        ))}
       </div>
     </section>
   )
