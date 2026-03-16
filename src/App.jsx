@@ -7,6 +7,7 @@ import ScoreScreen from "./feature/score/ScoreScreen";
 function App() {
   const [screen, setScreen] = useState("start");
   const [quiz, setQuiz] = useState(null);
+  const [score, setScore] = useState(0);
 
   return (
     <div 
@@ -17,8 +18,8 @@ function App() {
 
       <main className="pt-8 px-6">
         {screen === "start" && <StartScreen startQuiz={() => setScreen("quiz")} setQuiz={setQuiz} />}
-        {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} quiz={quiz} />}
-        {screen === "score" && <ScoreScreen goToStart={() => setScreen("start")} quiz={quiz} />}
+        {screen === "quiz" && <QuizScreen endQuiz={() => setScreen("score")} quiz={quiz} incrementScore={() => setScore(score + 1)} />}
+        {screen === "score" && <ScoreScreen goToStart={() => setScreen("start")} quiz={quiz} score={score} />}
       </main>
     </div>
   );

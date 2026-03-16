@@ -4,7 +4,7 @@ import errorIcon from "/images/icon-error.svg";
 import correctIcon from "/images/icon-correct.svg";
 import incorrectIcon from "/images/icon-incorrect.svg";
 
-function QuizScreen({ endQuiz, quiz }) {
+function QuizScreen({ endQuiz, quiz, incrementScore }) {
   const [questionNum, setQuestionNum] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
   const [error, setError] = useState(false);
@@ -32,6 +32,12 @@ function QuizScreen({ endQuiz, quiz }) {
       }
 
       return;
+    }
+
+    const selectedAnswer = currentQuestion.options[selectedOption];
+
+    if (selectedAnswer === currentQuestion.answer) {
+      incrementScore();
     }
 
     setSubmitted(true);
