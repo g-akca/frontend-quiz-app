@@ -65,6 +65,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
                 key={index}
                 handleClick={() => !submitted && setSelectedOption(index)}
                 className={`group transition-all
+                  ${submitted ? "cursor-default!" : ""}
                   ${
                     submitted && isSelected && isCorrect ? "border-3 border-green-500"
                     : submitted && isSelected && !isCorrect ? "border-3 border-red-500"
