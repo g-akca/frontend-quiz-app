@@ -39,7 +39,7 @@ function App() {
       <Header quizStarted={screen === "quiz" || screen === "score"} quiz={quiz} />
 
       <main className="py-8 px-6 flex justify-center tablet:px-16 tablet:pt-2 tablet:pb-10 desktop:px-35 desktop:pt-0.5 desktop:pb-20">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           {screen === "start" && (
             <motion.div
               key="start"
