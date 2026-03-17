@@ -10,7 +10,7 @@ import Switch from "../components/Switch";
 import Subject from "../components/Subject";
 
 function Header({ quizStarted, quiz }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");

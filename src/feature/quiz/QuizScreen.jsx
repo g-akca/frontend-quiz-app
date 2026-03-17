@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ListItemButton from "/src/components/ListItemButton";
 import SubmitButton from "/src/components/SubmitButton";
-import errorIcon from "/images/icon-error.svg";
 import correctIcon from "/images/icon-correct.svg";
 import incorrectIcon from "/images/icon-incorrect.svg";
+import QuizProgress from "./QuizProgress";
+import QuizError from "./QuizError";
 
 function QuizScreen({ endQuiz, quiz, incrementScore }) {
   const [questionNum, setQuestionNum] = useState(1);
@@ -50,12 +51,7 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
         <h2 className="text-grey-500 dark:text-blue-300 italic mb-4 tablet:mb-6">Question {questionNum} of {totalQuestions}</h2>
         <p className="text-[20px] leading-[120%] font-medium mb-6 tablet:mb-10 tablet:text-[36px] desktop:mb-46">{currentQuestion.question}</p>
 
-        <div className="h-4 bg-white dark:bg-blue-850 p-1 rounded-full">
-          <div
-            className="bg-purple-600 h-full rounded-full transition-all"
-            style={{ width: `${(questionNum / totalQuestions) * 100}%` }}
-          ></div>
-        </div>
+        <QuizProgress progress={(questionNum / totalQuestions) * 100} />
       </div>
       
       <div className="grow flex flex-col gap-4 tablet:gap-8">
@@ -109,19 +105,11 @@ function QuizScreen({ endQuiz, quiz, incrementScore }) {
           })}
         </div>
 
-        <SubmitButton
-          handleClick={handleSubmit}
-          disabled={selectedOption === null && !submitted}
-        >
+        <SubmitButton handleClick={handleSubmit} disabled={selectedOption === null && !submitted}>
           {submitted && questionNum >= totalQuestions ? "See Results" : submitted ? "Next Question" : "Submit Answer"}
         </SubmitButton>
 
-        {error && (
-          <div className="flex justify-center items-center gap-2">
-            <img src={errorIcon} alt="Error icon" className="w-8 h-8 tablet:w-10 tablet:h-10" />
-            <p className="text-red-500 dark:text-white font-medium text-lg leading-[100%] tablet:text-2xl tablet:leading-base tablet:font-normal">Please select an answer</p>
-          </div>
-        )}
+        {error && <QuizError />}
       </div>
     </section>
   );

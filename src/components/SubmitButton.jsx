@@ -1,6 +1,7 @@
 function SubmitButton({ handleClick, disabled, children }) {
   return (
     <button 
+      type="button"
       onClick={handleClick} 
       disabled={disabled}
       className={`p-4 h-14 text-white text-lg leading-[100%] font-medium rounded-xl transition-all 
